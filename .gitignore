@@ -1,2 +1,5 @@
 bundle
+tags
+*.netrwhist
+*.zip
 
