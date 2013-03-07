@@ -139,7 +139,7 @@ augroup END
 set hidden
 
 "shift+tab => previous  tab => next  ,bd => delete "
-map <s-tab> :bp<cr>
+map <s-tab> <C-^><cr>
 map <leader>bn :bn<cr>
 map <leader>bd :bd<cr>
 
