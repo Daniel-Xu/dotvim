@@ -227,6 +227,9 @@ nnoremap ,ss :setlocal spell!<cr>
 "while space in the end"
 set list
 set listchars=trail:+
+
+"support mouse action"
+"set mouse=a
 """"""""""""""""""""""""""""""""""""""""
 "             tabbing 
 """"""""""""""""""""""""""""""""""""""""
