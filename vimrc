@@ -25,7 +25,7 @@ Bundle 'ZenCoding.vim'
 Bundle 'AutoClose'
 
 "find word character"
-Bundle 'EasyMotion'
+"Bundle 'EasyMotion'
 
 "grep"
 Bundle 'ack.vim'
@@ -68,9 +68,9 @@ map <leader>g <Esc>:Ack
 let g:user_zen_leader_key = '<c-e>'
 
 "fuzzyfinder conf"
-nnoremap <F5> :FufRenewCache
+nnoremap <F5> :FufRenewCache<cr>
 nnoremap <c-m> :FufCoverageFile<cr>
-let g:fuf_coveragefile_globPatterns = ['**/*.erb', '**/*.rb']  
+let g:fuf_coveragefile_globPatterns = ['**/*.erb', '**/*.rb', '**/*.slim']  
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
 let g:fuf_enumeratingLimit = 5000
 let g:fuf_coveragefile_prompt = '=>'
@@ -231,7 +231,7 @@ vnoremap / /\v
 set pastetoggle=<f2>
 
 "spell"
-nnoremap ,ss :setlocal spell!<cr>
+nnoremap ,p :setlocal spell!<cr>
 
 "while space in the end"
 set list
