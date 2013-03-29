@@ -12,6 +12,12 @@ Bundle 'gmarik/vundle'
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin 
 """""""""""""""""""""""""""""""""""""""""""""
+"slim highlight"
+Bundle 'slim-template/vim-slim'
+
+"coffee script highlight"
+Bundle 'vim-coffee-script'
+
 "html"
 Bundle 'ZenCoding.vim'
 
@@ -26,6 +32,8 @@ Bundle 'ack.vim'
 
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+
+"ctrl-p"
 
 "tree"
 Bundle 'The-NERD-tree'
@@ -60,7 +68,8 @@ map <leader>g <Esc>:Ack
 let g:user_zen_leader_key = '<c-e>'
 
 "fuzzyfinder conf"
-nnoremap <leader>m :FufCoverageFile <cr>
+nnoremap <F5> :FufRenewCache
+nnoremap <c-m> :FufCoverageFile<cr>
 let g:fuf_coveragefile_globPatterns = ['**/*.erb', '**/*.rb']  
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
 let g:fuf_enumeratingLimit = 5000
@@ -88,7 +97,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " zm - close all
 "
 """""""""""""""""""""""""""""""""""""""""""""
-set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+"set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 ""set fdm=indent
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -112,8 +121,8 @@ noremap <silent> ,mh <C-W>H
 " Move the current window to the bottom of the main Vim window
 noremap <silent> ,mj <C-W>J"
 "open v or h window and move to it 
-nnoremap <leader>w <c-w>v<c-w>l
-nnoremap <leader>s <c-w>s<c-w>j
+nnoremap <leader>w <c-w>v<c-w>l<cr>
+nnoremap <leader>s <c-w>s<c-w>j<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""
 "            useful mapping 
@@ -146,11 +155,11 @@ map <leader>bd :bd<cr>
 """"""""""""""""""""""""""""""""""""""""
 "             quit quickly
 """"""""""""""""""""""""""""""""""""""""
-inoremap <leader>, <esc>:q<CR>
+inoremap <leader>, <esc>:q<cr>
 nnoremap <leader>, :q<CR>
-vnoremap <leader>, <esc>:q<CR>
+vnoremap <leader>, <esc>:q<cr>
 " force quit
-nnoremap ,f :q!<CR>
+nnoremap ,f :q!<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 "             vimrc editing 
