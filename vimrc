@@ -31,9 +31,10 @@ Bundle 'AutoClose'
 Bundle 'ack.vim'
 
 Bundle 'L9'
-Bundle 'FuzzyFinder'
+"Bundle 'FuzzyFinder'
 
 "ctrl-p"
+Bundle 'ctrlp.vim'
 
 "tree"
 Bundle 'The-NERD-tree'
@@ -53,6 +54,8 @@ Bundle 'tpope/vim-rails'
 "nice surround"
 Bundle 'surround.vim'
 
+"git"
+Bundle "fugitive.vim"
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader> 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -68,12 +71,27 @@ map <leader>g <Esc>:Ack
 let g:user_zen_leader_key = '<c-e>'
 
 "fuzzyfinder conf"
-nnoremap <F5> :FufRenewCache<cr>
-nnoremap <c-m> :FufCoverageFile<cr>
-let g:fuf_coveragefile_globPatterns = ['**/*.erb', '**/*.rb', '**/*.slim']  
-let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
-let g:fuf_enumeratingLimit = 5000
-let g:fuf_coveragefile_prompt = '=>'
+"nnoremap <F5> :FufRenewCache<CR>
+"nnoremap <c-k> :FufCoverageFile<cr>
+"let g:fuf_coveragefile_globPatterns = ['**/*.erb', '**/*.rb', '**/*.slim', '**/*']
+"let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|vendor)'
+"let g:fuf_enumeratingLimit = 5000
+"let g:fuf_coveragefile_prompt = '=>'
+
+"ctrlp"
+"<c-y> create new file"
+"default is path mode, <c-d> file mode"
+"<c-f> most recently unit mode"
+"<c-z> mark a file, then <c-o> "
+let g:ctrlp_map = '<c-k>'
+let g:ctrlp_open_multiple_files = 'v'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git)$',
+  \ 'file': '\v\.(log|jpg|png|jpeg)$',
+  \ }
+
 
 "NERDtree conf"
 nnoremap ,n :NERDTreeToggle<CR>
@@ -234,11 +252,12 @@ set pastetoggle=<f2>
 nnoremap ,p :setlocal spell!<cr>
 
 "while space in the end"
-set list
-set listchars=trail:+
+"set list
+"set listchars=trail:+
 
 "support mouse action"
 "set mouse=a
+
 """"""""""""""""""""""""""""""""""""""""
 "             tabbing 
 """"""""""""""""""""""""""""""""""""""""
@@ -261,7 +280,7 @@ set dictionary+=/usr/share/dict/words
 """"""""""""""""""""""""""""""""""""""""
 "             status line
 """"""""""""""""""""""""""""""""""""""""
-set statusline=%F:\ %l\ Total:\ %L
+set statusline=%F:\ %l\ Total:\ %L\ %{fugitive#statusline()}
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
@@ -280,6 +299,8 @@ nmap <silent> ,cd :lcd %:h<CR>
 if has("gui_macvim")
     set  t_Co=256
     colorscheme lucid
+    set guioptions-=m
+    set guioptions-=T
 
     set guifont=Menlo:h14
     set cursorline
