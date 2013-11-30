@@ -8,10 +8,15 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin 
 """""""""""""""""""""""""""""""""""""""""""""
+"vim easy align"
+Bundle 'junegunn/vim-easy-align'
+
+"powerline"
+"Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
 "slim highlight"
 Bundle 'slim-template/vim-slim'
 
@@ -56,6 +61,10 @@ Bundle 'surround.vim'
 
 "git"
 Bundle "fugitive.vim"
+
+"dash"
+Bundle "rizzatti/funcoo.vim"
+Bundle "rizzatti/dash.vim"
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader> 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -106,6 +115,8 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+"dash.app"
+nmap <silent> <leader>d <Plug>DashSearch
 """""""""""""""""""""""""""""""""""""""""""""
 "
 " these commands open folds
@@ -171,6 +182,12 @@ map <leader>bn :bn<cr>
 map <leader>bd :bd<cr>
 
 """"""""""""""""""""""""""""""""""""""""
+"             buffers
+""""""""""""""""""""""""""""""""""""""""
+vnoremap <silent> <Enter> :EasyAlign<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""
 "             quit quickly
 """"""""""""""""""""""""""""""""""""""""
 inoremap <leader>, <esc>:q<cr>
@@ -198,6 +215,8 @@ inoremap jj <esc>
 """"""""""""""""""""""""""""""""""""""""
 "             vim env
 """"""""""""""""""""""""""""""""""""""""
+set encoding=utf8
+
 "completion
 set wildmenu
 
@@ -214,7 +233,7 @@ set ruler
 
 " when the page starts to scroll, keep the cursor 8 lines from the top and 8 lines from the bottom
 set scrolloff=3
-set textwidth=78
+"set textwidth=78
 
 "the two combined to make vim deal with case-sensitive searching
 set ignorecase
@@ -292,6 +311,24 @@ set laststatus=2
 set cpoptions+=$
 " cd to the directory containing the file in the buffer
 nmap <silent> ,cd :lcd %:h<CR>
+set  t_Co=256
+set noshowmode
+
+
+""""""""""""""""""""""""""""""""""""""""
+"             airline
+""""""""""""""""""""""""""""""""""""""""
+"let g:airline_detect_whitespace = 0
+let g:airline_theme='dark'
+
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_branch_prefix = ' '
+let g:airline_readonly_symbol = ''
+let g:airline_linecolumn_prefix = ' '
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for macvim 
@@ -302,7 +339,8 @@ if has("gui_macvim")
     set guioptions-=m
     set guioptions-=T
 
-    set guifont=Menlo:h14
+    "set guifont=Menlo:h14
+    set guifont=Inconsolata\ for\ Powerline:h17
     set cursorline
     set cursorcolumn
     set colorcolumn=85
@@ -310,7 +348,6 @@ if has("gui_macvim")
     "set background=light
     highlight Normal ctermfg=grey ctermbg=grey 
 endif
-
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
 """""""""""""""""""""""""""""""""""""""""""""
