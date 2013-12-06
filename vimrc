@@ -65,6 +65,26 @@ Bundle "fugitive.vim"
 "dash"
 Bundle "rizzatti/funcoo.vim"
 Bundle "rizzatti/dash.vim"
+
+
+"javascript syntax color"
+Bundle 'jelera/vim-javascript-syntax'
+
+" js indent
+Bundle 'pangloss/vim-javascript'
+
+"The default mapping to toggle the plugin is <Leader>ig
+Bundle 'nathanaelkane/vim-indent-guides'
+
+"auto check error"
+Bundle 'scrooloose/syntastic'
+
+"parses your JavaScript properly"
+Bundle 'marijnh/tern_for_vim'
+
+"completion"
+Bundle 'Valloric/YouCompleteMe'
+
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader> 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -73,8 +93,17 @@ let mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""
 "             plugin config 
 """""""""""""""""""""""""""""""""""""""""""""
+"js error checking"
+let g:syntastic_check_on_open=1
+
 "ack config"
 map <leader>g <Esc>:Ack  
+
+"completion"
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+
 
 "ZenCoding config"
 let g:user_zen_leader_key = '<c-e>'
@@ -336,6 +365,8 @@ let g:airline_linecolumn_prefix = ' '
 if has("gui_macvim")
     set  t_Co=256
     colorscheme lucid
+    "colorscheme distinguished
+    "set background=dark
     set guioptions-=m
     set guioptions-=T
 
@@ -347,6 +378,12 @@ if has("gui_macvim")
     "set transparency=77
     "set background=light
     highlight Normal ctermfg=grey ctermbg=grey 
+
+
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgrey ctermbg=4
+
 endif
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
