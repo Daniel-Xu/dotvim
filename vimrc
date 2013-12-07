@@ -33,7 +33,8 @@ Bundle 'AutoClose'
 "Bundle 'EasyMotion'
 
 "grep"
-Bundle 'ack.vim'
+"Bundle 'ack.vim'
+Bundle 'rking/ag.vim'
 
 Bundle 'L9'
 "Bundle 'FuzzyFinder'
@@ -96,8 +97,10 @@ let mapleader=","
 "js error checking"
 let g:syntastic_check_on_open=1
 
-"ack config"
-map <leader>g <Esc>:Ack  
+"ag config"
+",h ag search current cursor word
+",g find what you want
+map <leader>g <Esc>:Ag<SPACE>
 
 "completion"
 let g:ycm_add_preview_to_completeopt=0
@@ -197,6 +200,9 @@ nnoremap <leader>U :<c-u>set transparency=0<cr>
 augroup filetype_html
     autocmd!
     autocmd FileType markdown set ts=4 sw=4 expandtab
+    autocmd FileType cc set ts=4 sw=4 expandtab
+    autocmd FileType c set ts=4 sw=4 expandtab
+    autocmd FileType cpp set ts=4 sw=4 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -343,6 +349,26 @@ nmap <silent> ,cd :lcd %:h<CR>
 set  t_Co=256
 set noshowmode
 
+""""""""""""""""""""""""""""""""""""""""
+"             silver search
+""""""""""""""""""""""""""""""""""""""""
+"use silver search to replace default built-in grep"
+".agignore for ignore some file"
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind ,h to grep word under cursor
+nnoremap <leader>h :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "             airline
