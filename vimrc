@@ -24,7 +24,9 @@ Bundle 'slim-template/vim-slim'
 Bundle 'vim-coffee-script'
 
 "html"
-Bundle 'ZenCoding.vim'
+"Bundle 'ZenCoding.vim'
+Bundle 'mattn/emmet-vim'
+
 
 "complete () '' "
 Bundle 'AutoClose'
@@ -109,7 +111,10 @@ set completeopt-=preview
 
 
 "ZenCoding config"
-let g:user_zen_leader_key = '<c-e>'
+let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_mode='a'
+let g:use_emmet_complete_tag = 1
+
 
 "fuzzyfinder conf"
 "nnoremap <F5> :FufRenewCache<CR>
@@ -200,9 +205,10 @@ nnoremap <leader>U :<c-u>set transparency=0<cr>
 augroup filetype_html
     autocmd!
     autocmd FileType markdown set ts=4 sw=4 expandtab
-    autocmd FileType cc set ts=4 sw=4 expandtab
-    autocmd FileType c set ts=4 sw=4 expandtab
-    autocmd FileType cpp set ts=4 sw=4 expandtab
+    autocmd FileType cc       set ts=4 sw=4 expandtab
+    autocmd FileType c        set ts=4 sw=4 expandtab
+    autocmd FileType cpp      set ts=4 sw=4 expandtab
+    autocmd FileType js       set ts=4 sw=4 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -367,8 +373,8 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" bind ,h to grep word under cursor
-nnoremap <leader>h :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"bind  ,m to grep word under cursor
+nnoremap <leader>m :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "             airline
