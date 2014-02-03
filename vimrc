@@ -80,13 +80,13 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'nathanaelkane/vim-indent-guides'
 
 "auto check error"
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 
 "parses your JavaScript properly"
-Bundle 'marijnh/tern_for_vim'
+"Bundle 'marijnh/tern_for_vim'
 
 "completion"
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader> 
@@ -97,7 +97,7 @@ let mapleader=","
 "             plugin config 
 """""""""""""""""""""""""""""""""""""""""""""
 "js error checking"
-let g:syntastic_check_on_open=1
+"let g:syntastic_check_on_open=0;
 
 "ag config"
 ",h ag search current cursor word
@@ -204,11 +204,11 @@ nnoremap <leader>U :<c-u>set transparency=0<cr>
 
 augroup filetype_html
     autocmd!
-    autocmd FileType markdown set ts=4 sw=4 expandtab
-    autocmd FileType cc       set ts=4 sw=4 expandtab
-    autocmd FileType c        set ts=4 sw=4 expandtab
-    autocmd FileType cpp      set ts=4 sw=4 expandtab
-    autocmd FileType js       set ts=4 sw=4 expandtab
+    autocmd FileType   markdown set ts=4 sw=4 expandtab
+    autocmd FileType         cc set ts=4 sw=4 expandtab
+    autocmd FileType          c set ts=4 sw=4 expandtab
+    autocmd FileType        cpp set ts=4 sw=4 expandtab
+    autocmd FileType javascript set ts=4 sw=4 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
