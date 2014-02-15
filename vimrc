@@ -199,8 +199,18 @@ nnoremap <leader>u :<c-u>set transparency=77<cr>
 nnoremap <leader>U :<c-u>set transparency=0<cr>
 
 "markdown"
-"nnoremap <leader>1 YpVr=
-"nnoremap <leader>2 YpVr-
+nnoremap <leader>1 YpVr=
+nnoremap <leader>2 YpVr-
+
+"for current path: %%"
+"c means current, and ,c to edit current
+cnoremap %% <C-R>=expand('%.h').'/'<cr>
+map <leader>c :edit %%
+
+
+"date setting"
+inoremap <leader>t <esc>:r! date "+\%Y-\%m-\%d \%H:\%M:\%S"<cr>
+
 
 augroup filetype_html
     autocmd!
