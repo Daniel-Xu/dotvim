@@ -11,6 +11,10 @@ Bundle 'gmarik/vundle'
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin 
 """""""""""""""""""""""""""""""""""""""""""""
+"handlebar"
+Plugin 'mustache/vim-mustache-handlebars'
+let g:mustache_abbreviations = 1
+
 "vim easy align"
 Bundle 'junegunn/vim-easy-align'
 
@@ -52,6 +56,8 @@ Bundle 'The-NERD-Commenter'
 
 "snippet"
 Bundle 'UltiSnips'
+Bundle 'honza/vim-snippets'
+
 
 "jump around () html and so on"
 Bundle 'matchit.zip' 
@@ -69,6 +75,10 @@ Bundle "fugitive.vim"
 Bundle "rizzatti/funcoo.vim"
 Bundle "rizzatti/dash.vim"
 
+"YCM"
+let g:ycm_complete_in_comments = 1 
+let g:ycm_seed_identifiers_with_syntax = 1 
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 
 
 "javascript syntax color"
 Bundle 'jelera/vim-javascript-syntax'
@@ -86,7 +96,8 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'marijnh/tern_for_vim'
 
 "completion"
-"Bundle 'Valloric/YouCompleteMe'
+
+Bundle 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader> 
@@ -148,9 +159,13 @@ map <c-c> ,c<space>
 
 "UltiSnips conf"
 let g:UltiSnipsUsePythonVersion = 2
+
+let g:UltiSnipsSnippetsDir        = $HOME.'/.vim/UltiSnips/'
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<c-h>"
 
 "dash.app"
 nmap <silent> <leader>d <Plug>DashSearch
@@ -230,6 +245,7 @@ set hidden
 "shift+tab => previous  tab => next  ,bd => delete "
 map <s-tab> <C-^><cr>
 map <leader>bn :bn<cr>
+map <leader>bp :bp<cr>
 map <leader>bd :bd<cr>
 
 """"""""""""""""""""""""""""""""""""""""
@@ -390,6 +406,8 @@ nnoremap <leader>m :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 "             airline
 """"""""""""""""""""""""""""""""""""""""
 "let g:airline_detect_whitespace = 0
+let g:airline#extensions#tabline#enabled = 1
+
 let g:airline_theme='dark'
 
 let g:airline_powerline_fonts=1
@@ -397,9 +415,16 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_branch_prefix = ' '
-let g:airline_readonly_symbol = ''
-let g:airline_linecolumn_prefix = ' '
+
+let g:airline_symbols = {}
+
+let g:airline_symbols.branch = ' '
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ' '
+
+"let g:airline_branch_prefix = ' '
+"let g:airline_readonly_symbol = ''
+"let g:airline_linecolumn_prefix = ' '
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for macvim 
