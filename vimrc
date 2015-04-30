@@ -147,7 +147,7 @@ let g:ctrlp_open_multiple_files = 'v'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git)$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test\|ember',
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
@@ -235,7 +235,10 @@ augroup filetype_html
     autocmd FileType         cc set ts=4 sw=4 expandtab
     autocmd FileType          c set ts=4 sw=4 expandtab
     autocmd FileType        cpp set ts=4 sw=4 expandtab
-    autocmd FileType javascript set ts=4 sw=4 expandtab
+    autocmd FileType javascript set ts=2 sw=2 expandtab
+    autocmd FileType ruby       set ts=2 sw=2 expandtab
+    autocmd FileType eruby      set ts=2 sw=2 expandtab
+    autocmd FileType erb        set ts=2 sw=2 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -449,6 +452,7 @@ if has("gui_macvim")
     highlight Normal ctermfg=grey ctermbg=grey 
 
 
+    let g:mustache_abbreviations = 1
     let g:indent_guides_auto_colors = 0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgrey ctermbg=4
