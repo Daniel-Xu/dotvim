@@ -53,6 +53,8 @@ Bundle 'The-NERD-tree'
 
 "comment"
 Bundle 'The-NERD-Commenter'
+"add additional space
+let NERDSpaceDelims=1
 
 "snippet"
 Bundle 'UltiSnips'
