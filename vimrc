@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""
-"            vundle 
+"            vundle
 """""""""""""""""""""""""""""""""""""""""""""
 set nocompatible          " be iMproved
 filetype off              " required!
@@ -9,7 +9,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 """""""""""""""""""""""""""""""""""""""""""""
-"            plugin 
+"            plugin
 """""""""""""""""""""""""""""""""""""""""""""
 "handlebar"
 Plugin 'mustache/vim-mustache-handlebars'
@@ -62,7 +62,7 @@ Bundle 'honza/vim-snippets'
 
 
 "jump around () html and so on"
-Bundle 'matchit.zip' 
+Bundle 'matchit.zip'
 
 "awesome rails plugin"
 Bundle 'tpope/vim-rails'
@@ -78,9 +78,9 @@ Bundle "rizzatti/funcoo.vim"
 Bundle "rizzatti/dash.vim"
 
 "YCM"
-let g:ycm_complete_in_comments = 1 
-let g:ycm_seed_identifiers_with_syntax = 1 
-let g:ycm_collect_identifiers_from_comments_and_strings = 1 
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 "javascript syntax color"
 Bundle 'jelera/vim-javascript-syntax'
@@ -102,12 +102,12 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""
-"             set <leader> 
+"             set <leader>
 """""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 
 """""""""""""""""""""""""""""""""""""""""""""
-"             plugin config 
+"             plugin config
 """""""""""""""""""""""""""""""""""""""""""""
 "js error checking"
 "let g:syntastic_check_on_open=0;
@@ -170,7 +170,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<c-h>"
 
 "dash.app"
-nmap <silent> <leader>d <Plug>DashSearch
+" nmap <silent> <leader>d <Plug>DashSearch
 """""""""""""""""""""""""""""""""""""""""""""
 "
 " these commands open folds
@@ -184,7 +184,7 @@ nmap <silent> <leader>d <Plug>DashSearch
 ""set fdm=indent
 
 """""""""""""""""""""""""""""""""""""""""""""
-"         windows management 
+"         windows management
 """""""""""""""""""""""""""""""""""""""""""""
 " Move the cursor to the window left of the current one"
 noremap <silent> <leader>h :wincmd h<cr>
@@ -203,12 +203,12 @@ noremap <silent> ,mk <C-W>K
 noremap <silent> ,mh <C-W>H
 " Move the current window to the bottom of the main Vim window
 noremap <silent> ,mj <C-W>J"
-"open v or h window and move to it 
+"open v or h window and move to it
 nnoremap <leader>w <c-w>v<c-w>l<cr>
 nnoremap <leader>s <c-w>s<c-w>j<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""
-"            useful mapping 
+"            useful mapping
 """""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>' viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>ft Vatzf
@@ -244,7 +244,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""
 "             buffers
 """"""""""""""""""""""""""""""""""""""""
-" in order to switch between buffers with unsaved change 
+" in order to switch between buffers with unsaved change
 set hidden
 
 "shift+tab => previous  tab => next  ,bd => delete "
@@ -269,15 +269,18 @@ vnoremap <leader>, <esc>:q<cr>
 nnoremap ,f :q!<cr>
 
 """"""""""""""""""""""""""""""""""""""""
-"             vimrc editing 
+"             vimrc editing
 """"""""""""""""""""""""""""""""""""""""
 "edite my vimrc
 nnoremap ,e :split $MYVIMRC<CR>
 " When vimrc is edited, reload it
 " copied from http://amix.dk/vim/vimrc.html
-autocmd! bufwritepost vimrc source ~/.vim/vimrc
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 """"""""""""""""""""""""""""""""""""""""
-"            quick escape  
+"            quick escape
 """"""""""""""""""""""""""""""""""""""""
 " set quick escape from insert mode, and now I can go without arrow keys and
 " use j and k to move around in insert mode
@@ -350,7 +353,7 @@ nnoremap ,p :setlocal spell!<cr>
 "set mouse=a
 
 """"""""""""""""""""""""""""""""""""""""
-"             tabbing 
+"             tabbing
 """"""""""""""""""""""""""""""""""""""""
 "when this is opened, <Tab> will be replaced by <space>
 set expandtab
@@ -364,7 +367,7 @@ set shiftwidth=2
 """"""""""""""""""""""""""""""""""""""""
 "             dictionary
 """"""""""""""""""""""""""""""""""""""
-" i_CTRL_X_K 
+" i_CTRL_X_K
 set dictionary+=~/.vim/dict/simple
 set dictionary+=/usr/share/dict/words
 
@@ -407,6 +410,9 @@ endif
 "bind  ,m to grep word under cursor
 nnoremap <leader>m :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+" strip trailing whitespace in the current file
+nnoremap <leader>d :%s/\s\+$//<cr>:let @/=''<CR>
+
 """"""""""""""""""""""""""""""""""""""""
 "             airline
 """"""""""""""""""""""""""""""""""""""""
@@ -431,10 +437,28 @@ let g:airline_symbols.linenr = ' '
 "let g:airline_readonly_symbol = ''
 "let g:airline_linecolumn_prefix = ' '
 
+
+
 """"""""""""""""""""""""""""""""""""""""
-"          config for macvim 
+"          config for trailing space
+""""""""""""""""""""""""""""""""""""""""
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+
+""""""""""""""""""""""""""""""""""""""""
+"          config for macvim
 """"""""""""""""""""""""""""""""""""""""
 if has("gui_macvim")
+    let g:NERDCustomDelimiters = {
+          \ 'ruby': { 'left': 'hel', 'leftAlt': 'FOO', 'rightAlt': 'BAR' },
+          \ 'grondle': { 'left': '{{', 'right': '}}' }
+          \ }
     set  t_Co=256
     colorscheme lucid
     "colorscheme distinguished
@@ -449,7 +473,7 @@ if has("gui_macvim")
     set colorcolumn=85
     "set transparency=77
     "set background=light
-    highlight Normal ctermfg=grey ctermbg=grey 
+    highlight Normal ctermfg=grey ctermbg=grey
 
 
     let g:mustache_abbreviations = 1
@@ -457,6 +481,17 @@ if has("gui_macvim")
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgrey ctermbg=4
 
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+
+    augroup reload_vimrc " {
+      autocmd!
+      autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END " }
 endif
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
