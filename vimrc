@@ -29,6 +29,13 @@ let g:mustache_abbreviations = 1
 " <Leader> tr :TernRefs All references under cursor
 " <Leader> tR :TernRename Rename variable
 
+Plugin 'heavenshell/vim-jsdoc'
+nmap <silent> <leader>jd <Plug>(jsdoc)
+let g:jsdoc_default_mapping = 0
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+let g:jsdoc_additional_descriptions = 1
 
 Plugin 'marijnh/tern_for_vim'
 " enable Keyboardinput
