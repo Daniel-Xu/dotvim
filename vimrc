@@ -8,12 +8,33 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"             set <leader>
+"""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","
+
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin
 """""""""""""""""""""""""""""""""""""""""""""
 "handlebar"
 Plugin 'mustache/vim-mustache-handlebars'
 let g:mustache_abbreviations = 1
+" <Leader> td :TernDef  Jump to definition (yes, 'td' is duplicated)
+" <Leader> tb :TernDocBrowse  Browse documentation
+" <Leader> tt :TernType Type hints, what's the variable type or function type
+" <Leader> tpd  :TernDefPreview Jump to definition inside preview
+" <Leader> tsd  :TernDefSplit Definition in new split
+" <Leader> ttd  :TernDefTab Definition in new tab
+" <Leader> tr :TernRefs All references under cursor
+" <Leader> tR :TernRename Rename variable
+
+
+Plugin 'marijnh/tern_for_vim'
+" enable Keyboardinput
+let g:tern_map_keys = 1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_prefix = '<leader>'
 
 "vim easy align"
 Bundle 'junegunn/vim-easy-align'
@@ -101,10 +122,6 @@ Bundle 'nathanaelkane/vim-indent-guides'
 
 Bundle 'Valloric/YouCompleteMe'
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"             set <leader>
-"""""""""""""""""""""""""""""""""""""""""""""
-let mapleader=","
 
 """""""""""""""""""""""""""""""""""""""""""""
 "             plugin config
