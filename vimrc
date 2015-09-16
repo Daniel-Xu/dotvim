@@ -40,7 +40,6 @@ let g:jsdoc_additional_descriptions = 1
 Plugin 'marijnh/tern_for_vim'
 " enable Keyboardinput
 let g:tern_map_keys = 1
-let g:tern_show_argument_hints='on_hold'
 let g:tern_map_prefix = '<leader>'
 
 "vim easy align"
