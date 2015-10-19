@@ -519,4 +519,5 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
 """""""""""""""""""""""""""""""""""""""""""""
+filetype off
 filetype plugin indent on     " required!
