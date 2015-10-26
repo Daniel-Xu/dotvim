@@ -17,6 +17,21 @@ let mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin
 """""""""""""""""""""""""""""""""""""""""""""
+
+" for tab key
+Plugin 'ervandew/supertab'
+
+" tab bar
+Plugin 'humiaozuzu/TabBar'
+let g:Tb_MaxSize = 2
+let g:Tb_TabWrap = 1
+let g:Tb_SplitBelow = 1
+let g:Tb_MapWindowNavVim = 1
+hi Tb_Normal guifg=white ctermfg=white
+hi Tb_Changed guifg=green ctermfg=green
+hi Tb_VisibleNormal ctermbg=252 ctermfg=235
+hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
+
 "handlebar"
 Plugin 'mustache/vim-mustache-handlebars'
 let g:mustache_abbreviations = 1
@@ -170,7 +185,7 @@ let g:ctrlp_open_multiple_files = 'v'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test\|ember',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$',
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 
@@ -439,8 +454,10 @@ nnoremap <leader>d :%s/\s\+$//<cr>:let @/=''<CR>
 """"""""""""""""""""""""""""""""""""""""
 "             airline
 """"""""""""""""""""""""""""""""""""""""
-"let g:airline_detect_whitespace = 0
+" let g:airline_detect_whitespace = 0
 let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:airline_theme='dark'
 
@@ -450,11 +467,11 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-let g:airline_symbols = {}
+" let g:airline_symbols = {}
 
-let g:airline_symbols.branch = ' '
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ' '
+" let g:airline_symbols.branch = ' '
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ' '
 
 "let g:airline_branch_prefix = ' '
 "let g:airline_readonly_symbol = ''
@@ -472,6 +489,11 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" clear trailing sapce
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" reselect text that just pasted
+nnoremap <leader>v V`]
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -511,13 +533,18 @@ if has("gui_macvim")
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
 
+    " tabbar
+    let g:Tb_MaxSize = 2
+    let g:Tb_TabWrap = 1
+    let g:Tb_SplitBelow = 1
+    let g:Tb_MapWindowNavVim = 1
     augroup reload_vimrc " {
       autocmd!
       autocmd BufWritePost $MYVIMRC source $MYVIMRC
     augroup END " }
+
 endif
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
 """""""""""""""""""""""""""""""""""""""""""""
-filetype off
 filetype plugin indent on     " required!
