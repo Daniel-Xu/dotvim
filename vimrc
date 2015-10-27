@@ -20,17 +20,16 @@ let mapleader=","
 
 " for tab key
 Plugin 'ervandew/supertab'
-
 " tab bar
-Plugin 'humiaozuzu/TabBar'
-let g:Tb_MaxSize = 2
-let g:Tb_TabWrap = 1
-let g:Tb_SplitBelow = 1
-let g:Tb_MapWindowNavVim = 1
-hi Tb_Normal guifg=white ctermfg=white
-hi Tb_Changed guifg=green ctermfg=green
-hi Tb_VisibleNormal ctermbg=252 ctermfg=235
-hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
+" Plugin 'humiaozuzu/TabBar'
+" let g:Tb_MaxSize = 2
+" let g:Tb_TabWrap = 1
+" let g:Tb_SplitBelow = 1
+" let g:Tb_MapWindowNavVim = 1
+" hi Tb_Normal guifg=white ctermfg=white
+" hi Tb_Changed guifg=green ctermfg=green
+" hi Tb_VisibleNormal ctermbg=252 ctermfg=235
+" hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 
 "handlebar"
 Plugin 'mustache/vim-mustache-handlebars'
@@ -286,11 +285,15 @@ augroup END
 set hidden
 
 "shift+tab => previous  tab => next  ,bd => delete "
-map <s-tab> <C-^><cr>
+noremap <s-tab> <C-^><cr>
+inoremap <s-tab> <C-^><cr>
+noremap <C-L> :bnext<cr>
+noremap <C-H> :bprev<cr>
 map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 map <leader>bd :bd<cr>
 
+" source % to refresh vim config
 """"""""""""""""""""""""""""""""""""""""
 "             buffers
 """"""""""""""""""""""""""""""""""""""""
@@ -313,10 +316,13 @@ nnoremap ,f :q!<cr>
 nnoremap ,e :split $MYVIMRC<CR>
 " When vimrc is edited, reload it
 " copied from http://amix.dk/vim/vimrc.html
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+" " Set to auto read when a file is changed from the outside
+set autoread
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""
 "            quick escape
 """"""""""""""""""""""""""""""""""""""""
@@ -359,7 +365,8 @@ set hlsearch
 nnoremap <leader><space> :noh<cr>
 
 "make % to tab
-map <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 
 "auto wrap"
 set wrap
@@ -451,6 +458,15 @@ nnoremap <leader>m :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " strip trailing whitespace in the current file
 nnoremap <leader>d :%s/\s\+$//<cr>:let @/=''<CR>
 
+" Delete trailing white space on save, useful for Python and CoffeeScript ;
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.js :call DeleteTrailingWS()
+autocmd BufWrite *.hbs :call DeleteTrailingWS()
+
 """"""""""""""""""""""""""""""""""""""""
 "             airline
 """"""""""""""""""""""""""""""""""""""""
@@ -458,6 +474,7 @@ nnoremap <leader>d :%s/\s\+$//<cr>:let @/=''<CR>
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:airline_theme='dark'
 
