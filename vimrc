@@ -286,12 +286,16 @@ set hidden
 
 "shift+tab => previous  tab => next  ,bd => delete "
 noremap <s-tab> <C-^><cr>
-inoremap <s-tab> <C-^><cr>
+inoremap <s-tab> <Esc><C-^><cr>
+vnoremap <s-tab> <C-^><cr>
 noremap <C-L> :bnext<cr>
 noremap <C-H> :bprev<cr>
-map <leader>bn :bn<cr>
+" map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 map <leader>bd :bd<cr>
+inoremap <leader>, <esc>:bd<cr>
+nnoremap <leader>, :bd<CR>
+vnoremap <leader>, <esc>:bd<cr>
 
 " source % to refresh vim config
 """"""""""""""""""""""""""""""""""""""""
@@ -303,9 +307,10 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 """"""""""""""""""""""""""""""""""""""""
 "             quit quickly
 """"""""""""""""""""""""""""""""""""""""
-inoremap <leader>, <esc>:q<cr>
-nnoremap <leader>, :q<CR>
-vnoremap <leader>, <esc>:q<cr>
+inoremap <leader>q <esc>:q<cr>
+nnoremap <leader>q :q<CR>
+vnoremap <leader>q <esc>:q<cr>
+
 " force quit
 nnoremap ,f :q!<cr>
 
@@ -364,9 +369,10 @@ set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
 
-"make % to tab
-nnoremap <tab> %
-vnoremap <tab> %
+" make % to tab
+map <tab> %
+" nnoremap <tab> %
+" vnoremap <tab> %
 
 "auto wrap"
 set wrap
