@@ -393,8 +393,10 @@ vnoremap / /\v
 "paste conf"
 set pastetoggle=<f2>
 
+nnoremap ,p "0p
+
 "spell"
-nnoremap ,p :setlocal spell!<cr>
+" nnoremap ,p :setlocal spell!<cr>
 
 "while space in the end"
 "set list
@@ -500,7 +502,7 @@ let g:airline_right_alt_sep = ''
 "let g:airline_readonly_symbol = ''
 "let g:airline_linecolumn_prefix = ' '
 
-
+Plugin 'airblade/vim-gitgutter'
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for trailing space
