@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""
 "            vundle
-"""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible          " be iMproved
 filetype off              " required!
 set backspace=indent,eol,start
@@ -16,6 +16,24 @@ let mapleader=","
 
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin
+"""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"            ES6
+"""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'isRuslan/vim-es6'
+" gfn→	function* name (arg) { yield arg; }
+" =>→	(arg) => { ... },
+" class→	class name { constructor () { ...} }
+" forof→	for (let value of arr) { ... }
+" im→	import lib from 'Library'
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+"            Elixir
+"""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'elixir-lang/vim-elixir'
+
 """""""""""""""""""""""""""""""""""""""""""""
 
 " for tab key
@@ -276,6 +294,7 @@ augroup filetype_html
     autocmd FileType ruby       set ts=2 sw=2 expandtab
     autocmd FileType eruby      set ts=2 sw=2 expandtab
     autocmd FileType erb        set ts=2 sw=2 expandtab
+    autocmd FileType exs        set ts=2 sw=2 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -333,8 +352,11 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""
 " set quick escape from insert mode, and now I can go without arrow keys and
 " use j and k to move around in insert mode
-inoremap JJ <esc>
 inoremap jj <esc>
+
+"best"
+noremap K 5k<esc>
+" nnoremap ; :
 
 """"""""""""""""""""""""""""""""""""""""
 "             vim env
@@ -383,7 +405,7 @@ nnoremap k gk
 
 "if you want to delete to n, exclude n
 "you should {d n d}, the same as {n j/k}
-set relativenumber
+set relativenumber number
 
 ""set swp file location
 set directory=~/tmp,/tmp
@@ -393,8 +415,8 @@ vnoremap / /\v
 "paste conf"
 set pastetoggle=<f2>
 
+"paste lastest yanked content"
 nnoremap ,p "0p
-
 "spell"
 " nnoremap ,p :setlocal spell!<cr>
 
@@ -474,6 +496,10 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.js :call DeleteTrailingWS()
 autocmd BufWrite *.hbs :call DeleteTrailingWS()
+autocmd BufWrite *.vimrc :call DeleteTrailingWS()
+autocmd BufWrite *.rb :call DeleteTrailingWS()
+autocmd BufWrite *.exs :call DeleteTrailingWS()
+autocmd BufWrite *.ex :call DeleteTrailingWS()
 
 """"""""""""""""""""""""""""""""""""""""
 "             airline
@@ -520,6 +546,52 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " reselect text that just pasted
 nnoremap <leader>v V`]
 
+""""""""""""""""""""""""""""""""""""""""
+"          config for UI
+""""""""""""""""""""""""""""""""""""""""
+" no blinking cursor
+set gcr=a:block-blinkon0
+
+" no scrolling bar
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
+set nowrap
+
+""""""""""""""""""""""""""""""""""""""""
+"          config for replacing
+""""""""""""""""""""""""""""""""""""""""
+"comfirm: before replace"
+"wholeworld: <iFoo>
+" function! Replace(confirm, wholeword, replace)
+    " wa
+    " let flag = ''
+    " if a:confirm
+        " let flag .= 'gec'
+    " else
+        " let flag .= 'ge'
+    " endif
+    " let search = ''
+    " if a:wholeword
+        " let search .= '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+    " else
+        " let search .= expand('<cword>')
+    " endif
+    " let replace = escape(a:replace, '/\&~')
+    " execute 'argdo %s/' . search . '/' . replace . '/' . flag . '| update'
+" endfunction
+
+"no confirm, no wholeword"
+" nnoremap <Leader>rl :call Replace(0, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+"no confirm, wholeword"
+" nnoremap <Leader>rw :call Replace(0, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+"confirm no wholeword"
+" nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+"confirm wholeword"
+" nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+" nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for macvim
@@ -569,6 +641,10 @@ if has("gui_macvim")
     augroup END " }
 
 endif
+
+"make bugger modifiable"
+set modifiable
+
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
 """""""""""""""""""""""""""""""""""""""""""""
