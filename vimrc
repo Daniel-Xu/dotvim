@@ -197,6 +197,10 @@ let g:use_emmet_complete_tag = 1
 "default is path mode, <c-d> file mode"
 "<c-f> most recently unit mode"
 "<c-z> mark a file, then <c-o> "
+" let g:ctrlp_cmd = 'CtrlPMRU'
+" let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_by_filename = 1
 let g:ctrlp_map = '<c-k>'
 let g:ctrlp_open_multiple_files = 'v'
 
@@ -295,6 +299,7 @@ augroup filetype_html
     autocmd FileType eruby      set ts=2 sw=2 expandtab
     autocmd FileType erb        set ts=2 sw=2 expandtab
     autocmd FileType exs        set ts=2 sw=2 expandtab
+    autocmd FileType ex         set ts=2 sw=2 expandtab
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""
@@ -500,6 +505,7 @@ autocmd BufWrite *.vimrc :call DeleteTrailingWS()
 autocmd BufWrite *.rb :call DeleteTrailingWS()
 autocmd BufWrite *.exs :call DeleteTrailingWS()
 autocmd BufWrite *.ex :call DeleteTrailingWS()
+autocmd BufWrite *.eex :call DeleteTrailingWS()
 
 """"""""""""""""""""""""""""""""""""""""
 "             airline
