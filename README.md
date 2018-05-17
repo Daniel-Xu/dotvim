@@ -15,9 +15,12 @@ Daniel-Xu's vim conf
 
 * in vim buffer, `BundleInstall`
 
-* in bash, `ln -s ~/.vim/vimrc ~/.vimrc`
+In bash,
+
+* `ln -s ~/.vim/vimrc ~/.vimrc`
+* `ln -s ~/.vim/zshrc ~/.zshrc`
+* `ln -s ~/.vim/tmux.conf ~/.tmux.conf`
 
 ## useful link ##
 
 [my blog](http://daniel-xu.github.com/blog/2013/03/04/vim-plugin/)
-
