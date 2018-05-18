@@ -1,13 +1,19 @@
 """""""""""""""""""""""""""""""""""""""""""""
 "            vundle
 """"""""""""""""""""""""""""""""""""""""""""""
-set nocompatible          " be iMproved
-filetype off              " required!
-set backspace=indent,eol,start
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader>
@@ -454,7 +460,7 @@ set dictionary+=/usr/share/dict/words
 """"""""""""""""""""""""""""""""""""""""
 "             status line
 """"""""""""""""""""""""""""""""""""""""
-set statusline=%F:\ %l\ Total:\ %L\ %{fugitive#statusline()}
+"set statusline=%F:\ %l\ Total:\ %L\ %{fugitive#statusline()}
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2

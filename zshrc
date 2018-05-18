@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/danielxu/.oh-my-zsh
-
+export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -87,7 +86,6 @@ alias mac="~/.m-cli/m"
 export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="/Users/danielxu/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-eval "$(rbenv init -)"
 export NODE_PATH="/Users/danielxu/.nvm/versions/node/v0.12.7/lib/node_modules"
 alias nombom='npm cache clear && bower cache clean && rm -rf node_modules bower_components && npm install && bower install'
 alias hide=' defaults write com.apple.finder CreateDesktop false && killall Finder'
@@ -102,9 +100,3 @@ export PATH="$PATH:/path/to/elixir/bin"
 export PATH="/Users/danielxu/.cask/bin:$PATH"
 export PATH="$PATH:~/.mix/escripts"
 export ERL_AFLAGS="-kernel shell_history enabled"
-
-# added by travis gem
-[ -f /Users/danielxu/.travis/travis.sh ] && source /Users/danielxu/.travis/travis.sh
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
