@@ -111,7 +111,7 @@ Bundle 'L9'
 "Bundle 'FuzzyFinder'
 
 "ctrl-p"
-Bundle 'ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 "tree"
 Bundle 'The-NERD-tree'
@@ -122,7 +122,7 @@ Bundle 'The-NERD-Commenter'
 let NERDSpaceDelims=1
 
 "snippet"
-Bundle 'UltiSnips'
+" Bundle 'UltiSnips'
 Bundle 'honza/vim-snippets'
 
 
@@ -164,7 +164,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 
 "completion"
 
-Bundle 'Valloric/YouCompleteMe'
+""Bundle 'Valloric/YouCompleteMe'
 
 
 """""""""""""""""""""""""""""""""""""""""""""
@@ -221,7 +221,7 @@ let g:ctrlp_custom_ignore = {
 nnoremap ,n :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 
-"NERDtreeComment conf"
+" NERDtreeComment conf"
 map <c-c> ,c<space>
 
 "UltiSnips conf"
@@ -416,7 +416,8 @@ nnoremap k gk
 
 "if you want to delete to n, exclude n
 "you should {d n d}, the same as {n j/k}
-set relativenumber number
+" set relativenumber number
+set number
 
 ""set swp file location
 set directory=~/tmp,/tmp
@@ -540,7 +541,7 @@ let g:airline_right_alt_sep = ''
 "let g:airline_readonly_symbol = ''
 "let g:airline_linecolumn_prefix = ' '
 
-Plugin 'airblade/vim-gitgutter'
+""Plugin 'airblade/vim-gitgutter'
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for trailing space
@@ -570,7 +571,7 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
-set nowrap
+" set nowrap
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for replacing
@@ -660,4 +661,5 @@ set modifiable
 """""""""""""""""""""""""""""""""""""""""""""
 "             open filetype detection
 """""""""""""""""""""""""""""""""""""""""""""
+call vundle#end()
 filetype plugin indent on     " required!
