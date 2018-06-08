@@ -363,7 +363,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""
 " set quick escape from insert mode, and now I can go without arrow keys and
 " use j and k to move around in insert mode
-inoremap jj <esc>
+inoremap fj <esc>
 
 "best"
 noremap K 5k<esc>
