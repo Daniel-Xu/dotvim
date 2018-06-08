@@ -20,7 +20,14 @@ In bash,
 * `ln -s ~/.vim/vimrc ~/.vimrc`
 * `ln -s ~/.vim/zshrc ~/.zshrc`
 * `ln -s ~/.vim/tmux.conf ~/.tmux.conf`
+* `ln -s ~/.vim/tmux.remote.conf ~/.tmux.remote.conf`
 * `ln -s ~/.vim/init.el ~/.spacemacs.d/init.el`
+
+## Nested Tmux
+
+Use F12 to toggle outer tmux.
+
+* when outer tmux is off, we can start to use bindings in inner tmux.
 
 ## useful link ##
 
