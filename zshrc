@@ -84,7 +84,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mac="~/.m-cli/m"
 
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
 export NVM_DIR="/Users/danielxu/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export NODE_PATH="/Users/danielxu/.nvm/versions/node/v0.12.7/lib/node_modules"

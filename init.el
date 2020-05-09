@@ -33,6 +33,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
+     gtags
+     semantic
+     ansible
      python
      yaml
      vimscript
@@ -43,12 +47,17 @@ values."
      ;; ----------------------------------------------------------------
      osx
      helm
+     rust
      evil-cleverparens
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
 
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode)
      ;; better-defaults
      emacs-lisp
      git
@@ -66,6 +75,7 @@ values."
      sql
      go
      colors
+     c-c++
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -76,6 +86,8 @@ values."
                                       diredful
                                       dired-icon
                                       yasnippet-snippets
+                                      carbon-now-sh
+                                      evil-multiedit
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -149,7 +161,6 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(misterioso)
-   ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
@@ -334,8 +345,40 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (define-key evil-insert-state-map (kbd "C-i") 'hippie-expand)
+
+  (add-hook 'elixir-mode-hook
+            (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+
+  (setq hippie-expand-try-function-list '(try-expand-debbrev
+                                          try-expand-debbrev-all-buffers
+                                          try-expand-debbrev-from-kill
+                                          try-complete-file-name-partially
+                                          try-complete-file-name
+                                          try-expand-all-abbrevs
+                                          try-expand-list
+                                          try-expand-line
+                                          try-complete-lisp-symbol-partially
+                                          try-complete-lisp-symbol))
+
+
   (setq neo-vc-integration nil)
+  (exec-path-from-shell-initialize)
+  (setq helm-ag-insert-at-point 'symbol)
   (spacemacs/toggle-evil-cleverparens-on)
+  ;; (define-key evil-insert-state-map (kbd "C-n") 'tempo-complete-tag)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'erlang-mode "n" 'tempo-complete-tag)
+  (setq-default c-basic-offset 4
+                tab-width 4)
+  (setq c-default-style "linux")
+  (setq projectile-enable-caching t)
+  (setq js-indent-level 2)
+  (setq tramp-verbose 7)
+  (require 'evil-multiedit)
+  ;; (global-company-mode)
+  (evil-multiedit-default-keybinds)
+  ;; (define-key company-active-map (kbd "C-n") (lambda () (interactive) (company-complete-common-or-cycle 1)))
+  ;; (define-key company-active-map (kbd "C-p") (lambda () (interactive) (company-complete-common-or-cycle -1)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -347,7 +390,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic yaml-mode evil-cleverparens paredit reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yasnippet-snippets diredful dired-icon vimrc-mode dactyl-mode web-beautify sql-indent rainbow-mode rainbow-identifiers ob-elixir livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc go-guru go-eldoc flycheck-mix flycheck-credo erlang company-tern dash-functional tern company-go go-mode color-identifiers-mode coffee-mode alchemist elixir-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help wgrep smex smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow ivy-hydra htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-ivy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor counsel-projectile counsel swiper ivy company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (stickyfunc-enhance srefactor helm-gtags ggtags company-quickhelp adaptive-wrap disaster company-c-headers cmake-mode clang-format evil-multiedit carbon-now-sh web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data jinja2-mode company-ansible ansible-doc ansible toml-mode racer flycheck-rust cargo rust-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic yaml-mode evil-cleverparens paredit reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl yasnippet-snippets diredful dired-icon vimrc-mode dactyl-mode web-beautify sql-indent rainbow-mode rainbow-identifiers ob-elixir livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc go-guru go-eldoc flycheck-mix flycheck-credo erlang company-tern dash-functional tern company-go go-mode color-identifiers-mode coffee-mode alchemist elixir-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help wgrep smex smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow ivy-hydra htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-ivy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor counsel-projectile counsel swiper ivy company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
