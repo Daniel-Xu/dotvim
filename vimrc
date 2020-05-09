@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""
 "             set <leader>
 """""""""""""""""""""""""""""""""""""""""""""
-let mapleader=","
+let mapleader=" "
 
 """""""""""""""""""""""""""""""""""""""""""""
 "            plugin
@@ -176,7 +176,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "ag config"
 ",h ag search current cursor word
 ",g find what you want
-map <leader>g <Esc>:Ag<SPACE>
+map <leader>/ <Esc>:Ag<SPACE>
 
 "completion"
 let g:ycm_add_preview_to_completeopt=0
@@ -208,7 +208,8 @@ let g:use_emmet_complete_tag = 1
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_map = '<c-k>'
-let g:ctrlp_open_multiple_files = 'v'
+let g:ctrlp_open_mulstiple_files = 'v'
+nnoremap  <Space>pf :CtrlP<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
@@ -218,7 +219,7 @@ let g:ctrlp_custom_ignore = {
 
 
 "NERDtree conf"
-nnoremap ,n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 
 " NERDtreeComment conf"
@@ -252,13 +253,13 @@ let g:UltiSnipsListSnippets="<c-h>"
 "         windows management
 """""""""""""""""""""""""""""""""""""""""""""
 " Move the cursor to the window left of the current one"
-noremap <silent> <leader>h :wincmd h<cr>
+noremap <silent> <leader>wh :wincmd h<cr>
 " Move the cursor to the window below the current one
-noremap <silent> ,j :wincmd j<cr>
+noremap <silent> <leader>wj :wincmd j<cr>
 " Move the cursor to the window above the current one
-noremap <silent> ,k :wincmd k<cr>
+noremap <silent> <leader>wk :wincmd k<cr>
 " Move the cursor to the window right of the current one
-noremap <silent> ,l :wincmd l<cr>
+noremap <silent> <leader>wl :wincmd l<cr>
 
 " Move the current window to the right of the main Vim window
 noremap <silent> ,ml <C-W>L
@@ -269,8 +270,8 @@ noremap <silent> ,mh <C-W>H
 " Move the current window to the bottom of the main Vim window
 noremap <silent> ,mj <C-W>J"
 "open v or h window and move to it
-nnoremap <leader>w <c-w>v<c-w>l<cr>
-nnoremap <leader>s <c-w>s<c-w>j<cr>
+nnoremap <leader>wv <c-w>v<c-w>l<cr>
+nnoremap <leader>ws <c-w>s<c-w>j<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""
 "            useful mapping
@@ -318,8 +319,8 @@ set hidden
 noremap <s-tab> <C-^><cr>
 inoremap <s-tab> <Esc><C-^><cr>
 vnoremap <s-tab> <C-^><cr>
-noremap <C-L> :bnext<cr>
-noremap <C-H> :bprev<cr>
+noremap L :bnext<cr>
+noremap H :bprev<cr>
 " map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 map <leader>bd :bd<cr>
@@ -337,9 +338,9 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 """"""""""""""""""""""""""""""""""""""""
 "             quit quickly
 """"""""""""""""""""""""""""""""""""""""
-inoremap <leader>q <esc>:q<cr>
-nnoremap <leader>q :q<CR>
-vnoremap <leader>q <esc>:q<cr>
+inoremap <leader>wd <esc>:q<cr>
+nnoremap <leader>wd :q<CR>
+vnoremap <leader>wd <esc>:q<cr>
 
 " force quit
 nnoremap ,f :q!<cr>
