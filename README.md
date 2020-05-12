@@ -22,6 +22,7 @@ In bash,
 * `ln -s ~/.vim/tmux.conf ~/.tmux.conf`
 * `ln -s ~/.vim/tmux.remote.conf ~/.tmux.remote.conf`
 * `ln -s ~/.vim/init.el ~/.spacemacs.d/init.el`
+* `ln -s ~/.vim/ideavimrc  ~/.ideavimrc`
 
 ## Nested Tmux
 
