@@ -48,11 +48,11 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node brew gem github osx ruby rbenv z elixir tmux)
+plugins=(git node brew gem github osx ruby rbenv z tmux docker docker-compose kubectl)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/.npm/bin:/usr/local/Cellar/boost/1.59.0"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -101,7 +101,36 @@ export PATH="$PATH:/path/to/elixir/bin"
 export PATH="/Users/danielxu/.cask/bin:$PATH"
 export PATH="$PATH:~/.mix/escripts"
 export ERL_AFLAGS="-kernel shell_history enabled"
+alias tl="tmux list-session"
+alias ta="tmux attach -t"
+alias ts="tmux new -s"
+
+# Influx db
+alias infdb='influx -precision rfc3339'
+
+# java version
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
+export GTAGSLABEL=pygments
+
+export GOROOT=$(go env GOROOT)
+export GOPATH=$(go env GOPATH)
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/bin:/usr/local/sbin:$PATH
+
+function prev() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "pet new `printf %q "$PREV"`"
+}
+
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^v' pet-select
+
