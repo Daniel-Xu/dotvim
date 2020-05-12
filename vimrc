@@ -223,7 +223,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 
 " NERDtreeComment conf"
-map <c-c> ,c<space>
+map <c-c> <Plug>NERDCommenterToggle
+
+
+
 
 "UltiSnips conf"
 let g:UltiSnipsUsePythonVersion = 2
@@ -324,9 +327,9 @@ noremap H :bprev<cr>
 " map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
 map <leader>bd :bd<cr>
-inoremap <leader>, <esc>:bd<cr>
-nnoremap <leader>, :bd<CR>
-vnoremap <leader>, <esc>:bd<cr>
+inoremap ,, <esc>:bd<cr>
+nnoremap ,, :bd<CR>
+vnoremap ,, <esc>:bd<cr>
 
 " source % to refresh vim config
 """"""""""""""""""""""""""""""""""""""""
@@ -543,6 +546,101 @@ let g:airline_right_alt_sep = ''
 "let g:airline_linecolumn_prefix = ' '
 
 ""Plugin 'airblade/vim-gitgutter'
+
+""""""""""""""""""""""""""""""""""""""""
+"         cscope and ctags
+""""""""""""""""""""""""""""""""""""""""
+
+"Plugin 'brookhong/cscope.vim'
+"nnoremap gi :call CscopeFindInteractive(expand('<cword>'))<CR>
+"nnoremap gl :call ToggleLocationList()<CR>
+"" s: Find this C symbol
+"nnoremap  gs :call CscopeFind('s', expand('<cword>'))<CR>
+"" g: Find this definition
+"nnoremap  gd :call CscopeFind('g', expand('<cword>'))<CR>
+"" d: Find functions called by this function (g nested)
+"nnoremap  gn :call CscopeFind('d', expand('<cword>'))<CR>
+"" c: Find functions calling this function
+"nnoremap  gf :call CscopeFind('c', expand('<cword>'))<CR>
+"" t: Find this text string
+"nnoremap  gt :call CscopeFind('t', expand('<cword>'))<CR>
+"" e: Find this egrep pattern
+"nnoremap  ge :call CscopeFind('e', expand('<cword>'))<CR>
+"" f: Find this file
+"nnoremap  ff :call CscopeFind('f', expand('<cword>'))<CR>
+"" i: Find files #including this file
+"nnoremap  fi :call CscopeFind('i', expand('<cword>'))<CR>
+
+if has("cscope")
+
+    """"""""""""" Standard cscope/vim boilerplate
+
+    " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
+    set cscopetag
+
+    " check cscope for definition of a symbol before checking ctags: set to 1
+    " if you want the reverse search order.
+    set csto=0
+
+    " add any cscope database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add the database pointed to by environment variable
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+
+    " show msg when any other cscope db added
+    set cscopeverbose
+
+
+    """"""""""""" My cscope/vim key mappings
+    "
+    " The following maps all invoke one of the following cscope search types:
+    "
+    "   's'   symbol: find all references to the token under cursor
+    "   'g'   global: find global definition(s) of the token under cursor
+    "   'c'   calls:  find all calls to the function name under cursor
+    "   't'   text:   find all instances of the text under cursor
+    "   'e'   egrep:  egrep search for the word under cursor
+    "   'f'   file:   open the filename under cursor
+    "   'i'   includes: find files that include the filename under cursor
+    "   'd'   called: find functions that function under cursor calls
+    "
+
+    " To do the first type of search, hit 'CTRL-\', followed by one of the
+    " cscope search types above (s,g,c,t,e,f,i,d).  The result of your cscope
+    " search will be displayed in the current window.  You can use CTRL-T to
+    " go back to where you were before the search.
+    "
+
+    nmap gs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap gd :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap gf :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap gt :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap ge :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap gn :cs find d <C-R>=expand("<cword>")<CR><CR>
+    ""nmap gsf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    ""nmap gi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+
+
+    " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
+    " makes the vim window split horizontally, with search result displayed in
+    " the new window.
+    "
+    " (Note: earlier versions of vim may not have the :scs command, but it
+    " can be simulated roughly via:
+    "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>
+
+    nmap sgs :scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap sgd :scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap sgf :scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap sgt :scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap sge :scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap sgn :scs find d <C-R>=expand("<cword>")<CR><CR>
+
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for trailing space
