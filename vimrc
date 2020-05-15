@@ -295,7 +295,7 @@ map <leader>c :edit %%
 
 
 "date setting"
-inoremap <leader>t <esc>:r! date "+\%Y-\%m-\%d \%H:\%M:\%S"<cr>
+" inoremap <leader>t <esc>:r! date "+\%Y-\%m-\%d \%H:\%M:\%S"<cr>
 
 
 augroup filetype_html
