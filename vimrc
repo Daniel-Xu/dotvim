@@ -535,6 +535,11 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
+Plugin 'majutsushi/tagbar'
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
+
+
 " let g:airline_symbols = {}
 
 " let g:airline_symbols.branch = ' '
@@ -657,6 +662,9 @@ autocmd BufWinLeave * call clearmatches()
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " reselect text that just pasted
 nnoremap <leader>v V`]
+
+nmap <leader>tt :TagbarToggle<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""
 "          config for UI
