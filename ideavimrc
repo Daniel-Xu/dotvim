@@ -80,6 +80,7 @@ nmap zC :action CollapseAllRegions<CR>
 
 nmap <leader><Space> :action GotoAction<CR>
 nmap <leader>cc      :action GotoClass<CR>
+nmap <leader>dd      :action Debugger.RemoveAllBreakpoints<CR>
 nmap <leader>pf      :action GotoFile<CR>
 nmap <leader>ft      :action ActivateProjectToolWindow<CR>
 nmap <leader>fs      :action SaveAll<CR>
