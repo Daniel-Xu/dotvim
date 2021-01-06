@@ -80,7 +80,7 @@ nmap zC :action CollapseAllRegions<CR>
 
 nmap <leader><Space> :action GotoAction<CR>
 nmap <leader>cc      :action GotoClass<CR>
-nmap <leader>dd      :action Debugger.RemoveAllBreakpoints<CR>
+nmap <leader>db      :action Debugger.RemoveAllBreakpoints<CR>
 nmap <leader>pf      :action GotoFile<CR>
 nmap <leader>ft      :action ActivateProjectToolWindow<CR>
 nmap <leader>fs      :action SaveAll<CR>
@@ -89,8 +89,8 @@ nmap <leader>bb      :action RecentFiles<CR>
 nmap <leader>bi      :action ActivateStructureToolWindow<CR>
 nmap <leader>bp      :action FileStructurePopup<cr>
 nmap <leader>bu      :action ReopenClosedTab<CR>
-nmap <leader>db      :action Debug<CR>
-nmap <leader>dB      :action DebugClass<CR>
+nmap <leader>dd      :action Debug<CR>
+nmap <leader>dD      :action DebugClass<CR>
 nmap <leader>dw      :action ActivateDebugToolWindow<CR>
 nmap <leader>tt      :action ToggleLineBreakpoint<CR>
 nmap <leader>rr      :action Run<CR>
@@ -104,9 +104,9 @@ nmap <leader>st      :action GotoTest<cr>
 nmap <leader>'       :action ActivateTerminalToolWindow<CR>
 nmap <leader>bk      :action ShowBookmarks<CR>
 nmap gd              :action GotoDeclaration<cr>
-nmap gf              :action FindUsages<cr>
+nmap <leader>sR              :action FindUsages<cr>
 nmap gi              :action QuickImplementations<CR>
-nmap gs              :action GotoSymbol<cr>
+nmap <leader>sJ              :action GotoSymbol<cr>
 nmap ,=              :action ReformatCode<CR>
 nmap <c-o>           :action Back<cr>
 nmap <c-i>           :action Forward<CR>
@@ -127,8 +127,8 @@ vmap <leader>bb      :<Backspace><Backspace><Backspace><Backspace><Backspace>act
 vmap <leader>bu      :<Backspace><Backspace><Backspace><Backspace><Backspace>action ReopenClosedTab<CR>
 vmap <leader>bi      :<Backspace><Backspace><Backspace><Backspace><Backspace>action ActivateStructureToolWindow<CR>
 vmap <leader>bp      :<Backspace><Backspace><Backspace><Backspace><Backspace>action FileStructurePopup<cr>
-vmap <leader>db      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Debug<CR>
-vmap <leader>dB      :<Backspace><Backspace><Backspace><Backspace><Backspace>action DebugClass<CR>
+vmap <leader>dd      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Debug<CR>
+vmap <leader>dD      :<Backspace><Backspace><Backspace><Backspace><Backspace>action DebugClass<CR>
 vmap <leader>dw      :<Backspace><Backspace><Backspace><Backspace><Backspace>action ActivateDebugToolWindow<CR>
 vmap <leader>tt      :<Backspace><Backspace><Backspace><Backspace><Backspace>action ToggleLineBreakpoint<CR>
 vmap <leader>rr      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Run<CR>
