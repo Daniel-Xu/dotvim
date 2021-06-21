@@ -6,6 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="bira"
 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -109,7 +110,7 @@ alias ts="tmux new -s"
 alias infdb='influx -precision rfc3339'
 
 # java version
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 . $HOME/.asdf/asdf.sh
 
@@ -134,3 +135,5 @@ zle -N pet-select
 stty -ixon
 bindkey '^v' pet-select
 
+
+export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1086

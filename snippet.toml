@@ -1,0 +1,49 @@
+[[snippets]]
+  description = "connect to polar 80"
+  command = "mysql -h<host=127.0.0.1> -u<user=acc> -p<passowrd=a1234561> -P<port=55444> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "connect to polar local"
+  command = "mysql -h<host=127.0.0.1> -u<user=xwd> -p<passowrd=123> -P<port=55444> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "connect to local rds"
+  command = "mysql -h<host=127.0.0.1> -u<user=xwd> -p<passowrd=123> -P<port=55444> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "connect to remote mysql"
+  command = "mysql -h<host=11.158.241.140> -u<user=aurora> -p<passowrd=YG3OMR04dnS2hWD> -P<port=55444> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "tcpdump"
+  command = "sudo tcpdump -i lo0  -s 0  port 55444 -nnnn -XX -vv -w ~/Desktop/prep.pcap"
+  output = ""
+
+[[snippets]]
+  description = "copy command"
+  command = "pet search | clipcopy"
+  output = ""
+
+[[snippets]]
+  description = "connect to docker"
+  command = "docker exec -it maxscale bash"
+  output = ""
+
+[[snippets]]
+  description = "production jump machine"
+  command = "ssh shuhan.xwd@login1.am101.alibaba-inc.com"
+  output = ""
+
+[[snippets]]
+  description = "jump machine"
+  command = "ssh shuhan.xwd@login1.am101.alibaba-inc.com"
+  output = ""
+
+[[snippets]]
+  description = "test"
+  command = "ssh root@11.238.118.49"
+  output = ""
