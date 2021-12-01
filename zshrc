@@ -49,11 +49,10 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node brew gem github osx ruby rbenv z tmux docker docker-compose kubectl)
+plugins=(git node brew gem github macos ruby rbenv z tmux docker docker-compose kubectl mix)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/.npm/bin:/usr/local/Cellar/boost/1.59.0"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -85,7 +84,8 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mac="~/.m-cli/m"
 
-export PATH="$HOME/.cargo/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/.npm/bin:/usr/local/Cellar/boost/1.59.0"
+export PATH="$HOME/.cargo/bin:/usr/local/sbin:/usr/local/bin:$PATH"
 export NVM_DIR="/Users/danielxu/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export NODE_PATH="/Users/danielxu/.nvm/versions/node/v0.12.7/lib/node_modules"
@@ -136,4 +136,8 @@ stty -ixon
 bindkey '^v' pet-select
 
 
-export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1086
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
+
+
+#export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1086

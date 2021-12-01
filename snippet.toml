@@ -13,6 +13,12 @@
   command = "mysql -h<host=127.0.0.1> -u<user=xwd> -p<passowrd=123> -P<port=55444> -c -A"
   output = ""
 
+
+[[snippets]]
+  description = "learn"
+  command = "mysql -h<host=11.158.241.140> -u<user=xwd> -p<passowrd=123> -P<port=10000> -c -A"
+  output = ""
+
 [[snippets]]
   description = "connect to remote mysql"
   command = "mysql -h<host=11.158.241.140> -u<user=aurora> -p<passowrd=YG3OMR04dnS2hWD> -P<port=55444> -c -A"

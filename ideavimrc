@@ -101,17 +101,16 @@ nmap <leader>en      :action GotoNextError<cr>
 nmap <leader>ep      :action GotoPreviousError<cr>
 nmap <leader>so      :action GotoRelated<cr>
 nmap <leader>st      :action GotoTest<cr>
-nmap <leader>'       :action ActivateTerminalToolWindow<CR>
 nmap <leader>bk      :action ShowBookmarks<CR>
 nmap gd              :action GotoDeclaration<cr>
 nmap <leader>sR              :action FindUsages<cr>
 nmap gi              :action QuickImplementations<CR>
 nmap <leader>sJ              :action GotoSymbol<cr>
-nmap ,=              :action ReformatCode<CR>
+nmap <leader>=              :action ReformatCode<CR>
 nmap <c-o>           :action Back<cr>
 nmap <c-i>           :action Forward<CR>
 nmap <leader>gm      :action Generate<CR>
-nmap <c-r>           :action Redo<CR>
+"nmap <c-r>           :action Redo<CR>
 nmap <leader>ga      :action Annotate<CR>
 nmap <leader>gg      :action Git.CompareWithBranch<CR>
 
@@ -193,3 +192,17 @@ vnoremap > >gv
 
 nnoremap <leader>sc :noh<CR>
 
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+
+
+" activate it
+nnoremap <leader>' :action ActivateTerminalToolWindow<CR>
+" create new one
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>

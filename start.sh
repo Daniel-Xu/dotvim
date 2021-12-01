@@ -3,6 +3,7 @@
 
 # install packages
 brew install tmux \
+bash \
 reattach-to-user-namespace \
 tig \
 ag \
