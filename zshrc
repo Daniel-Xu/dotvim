@@ -159,3 +159,8 @@ export PATH="/usr/local/opt/llvm@12/bin:$PATH"
 export PATH="/usr/local/opt/bison/bin:$PATH"
 
 
+function zr () { zellij run --name "$*" -- zsh -ic "$*";}
+function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
+function ze () { zellij edit "$*";}
+function zef () { zellij edit --floating "$*";}
+
