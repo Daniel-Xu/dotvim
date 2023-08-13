@@ -25,6 +25,21 @@
   output = ""
 
 [[snippets]]
+  description = "connect to upstream maxscale"
+  command = "mysql -h<host=11.158.241.140> -u<user=xwd> -p<passowrd=123> -P<port=55445> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "connect to multi remote mysql"
+  command = "mysql -h<host=11.158.241.140> -u<user=aurora> -p<passowrd=PdbGj7mrw2qOcu0> -P<port=55445> -c -A"
+  output = ""
+
+[[snippets]]
+  description = "connect to multi local mysql"
+  command = "mysql -h<host=127.0.0.1> -u<user=aurora> -p<passowrd=19xeLPIDab8Az6M> -P<port=55444> -c -A"
+  output = ""
+
+[[snippets]]
   description = "tcpdump"
   command = "sudo tcpdump -i lo0  -s 0  port 55444 -nnnn -XX -vv -w ~/Desktop/prep.pcap"
   output = ""
@@ -52,4 +67,9 @@
 [[snippets]]
   description = "test"
   command = "ssh root@11.238.118.49"
+  output = ""
+
+[[snippets]]
+  description = "connect to debug polar mysql"
+  command = "mysql -h<host=11.158.241.130> -u<user=xwd> -p<passowrd=123> -P<port=30000> -c -A"
   output = ""

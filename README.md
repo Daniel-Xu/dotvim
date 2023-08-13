@@ -25,7 +25,7 @@ In bash,
 * `ln -s ~/.vim/ideavimrc  ~/.ideavimrc`
 * `ln -s ~/.vim/config.toml  ~/.config/pet/config.toml`
 * `ln -s ~/.vim/snippet.toml  ~/.config/pet/snippet.toml`
-* `ln -s ~/.vim/config.kdl  ~/.config/zellij/config.kdl`
+* `ln -s ~/.vim/zellij  ~/.config/zellij`
 
 ## Nested Tmux
 
