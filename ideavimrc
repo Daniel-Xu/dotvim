@@ -107,13 +107,15 @@ nmap <leader>sR              :action FindUsages<cr>
 nmap gi              :action QuickImplementations<CR>
 nmap <leader>sJ              :action GotoSymbol<cr>
 nmap <leader>=              :action ReformatCode<CR>
-nmap <c-o>           :action Back<cr>
-nmap <c-i>           :action Forward<CR>
+map <c-o>           :action Back<cr>
+map <c-i>           :action Forward<CR>
 nmap <leader>gm      :action Generate<CR>
 "nmap <c-r>           :action Redo<CR>
 nmap <leader>ga      :action Annotate<CR>
+nmap <leader>ff      :action Refactorings.QuickListPopupAction<CR>
 nmap <leader>gg      :action Git.CompareWithBranch<CR>
 
+vmap <leader>ga      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Refactorings.QuickListPopupAction<CR>
 vmap <leader>ga      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Annotate<CR>
 vmap <leader>gg      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Git.CompareWithBranch<CR>
 vmap <leader><Space> :<Backspace><Backspace><Backspace><Backspace><Backspace>action GotoAction<CR>

@@ -49,7 +49,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node brew gem github macos ruby rbenv z tmux docker docker-compose kubectl mix)
+plugins=(git node brew gem github macos ruby rbenv z tmux docker docker-compose kubectl mix emoji)
 
 # User configuration
 
@@ -106,6 +106,11 @@ alias tl="tmux list-session"
 alias ta="tmux attach -t"
 alias ts="tmux new -s"
 
+alias zl="zellij list-sessions"
+alias za="zellij attach"
+alias zs="zellij -s"
+
+
 # Influx db
 alias infdb='influx -precision rfc3339'
 
@@ -139,5 +144,18 @@ bindkey '^v' pet-select
 export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
 
+export FLYCTL_INSTALL="/Users/shuhan/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/tbb@2020/lib"
+export CPPFLAGS="-I/usr/local/opt/tbb@2020/include"
+
+#export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+#export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 #export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087 all_proxy=socks5://127.0.0.1:1086
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export PATH="/usr/local/opt/llvm@12/bin:$PATH"
+export PATH="/usr/local/opt/bison/bin:$PATH"
+
+
