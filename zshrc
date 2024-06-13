@@ -164,3 +164,5 @@ function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
 function ze () { zellij edit "$*";}
 function zef () { zellij edit --floating "$*";}
 
+eval "$(atuin init zsh)"
+eval "$(atuin init zsh)"
